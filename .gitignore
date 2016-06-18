@@ -1,4 +1,6 @@
 *.class
+.idea/
+mark2slides.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
