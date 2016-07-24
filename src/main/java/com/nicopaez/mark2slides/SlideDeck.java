@@ -11,12 +11,15 @@ import java.io.IOException;
 public class SlideDeck {
     private final PathHolder pathHolder;
     private final FileService fileService;
+    private final File inputFile;
     private String name;
 
-    public SlideDeck(String rawName, PathHolder pathHolder, FileService fileService) {
+    public SlideDeck(String fileName, PathHolder pathHolder, FileService fileService) {
         this.pathHolder = pathHolder;
         this.fileService = fileService;
-        this.name = rawName;
+        this.name = fileName;
+        String filePath = pathHolder.getInputPath(fileName);
+        this.inputFile = this.fileService.getFile(filePath);
     }
 
     public void save() {

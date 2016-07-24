@@ -19,4 +19,9 @@ public class FileServiceImpl implements FileService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public File getFile(String filePath) {
+        return null;
+    }
 }

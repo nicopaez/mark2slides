@@ -21,6 +21,15 @@ public class PathHolderTest {
     }
 
     @Test
+    public void shouldGetInputPath() {
+        System.setProperty("user.dir", "/user/john");
+        PathHolder pathHolder = new PathHolder();
+        String fileName = "presentation1.md";
+        String actualPath = pathHolder.getInputPath(fileName);
+        assertThat(actualPath, is(equalTo("/user/john/presentation1.md")));
+    }
+
+    @Test
     public void shouldGetTemplatePath() {
         PathHolder pathHolder = new PathHolder();
         String actualPath = pathHolder.getTemplatePath();

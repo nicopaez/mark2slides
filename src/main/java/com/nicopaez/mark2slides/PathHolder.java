@@ -9,6 +9,11 @@ public class PathHolder {
     public PathHolder() {
         this.basePath = System.getProperty("user.dir");
     }
+
+    public String getInputPath(String fileName) {
+        return this.basePath + "/" + fileName;
+    }
+
     public String getTargetPath(String folderName) {
         return this.basePath + "/" + folderName;
     }
@@ -16,4 +21,6 @@ public class PathHolder {
     public String getTemplatePath() {
         return System.getProperty("user.dir") + "/template";
     }
+
+
 }

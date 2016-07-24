@@ -22,4 +22,13 @@ public class SlideDeckTest {
         deck.save();
         Mockito.verify(fileService).copyDirectory(anyString(),anyString());
     }
+
+    @Test
+    public void shouldReadSource() {
+        FileService fileService = Mockito.mock(FileService.class);
+        SlideDeck deck = new SlideDeck("miDeck",new PathHolder(), fileService);
+
+        //Mockito.verify(fileService).getInputFile();
+
+    }
 }
