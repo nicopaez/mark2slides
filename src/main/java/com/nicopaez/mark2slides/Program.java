@@ -11,7 +11,8 @@ public class Program {
         String slideDeckName = args[0];
         String templateDir = "template";
         System.out.println("Mark2Slide => " + slideDeckName);
-        SlideDeck slideDeck = new SlideDeck(slideDeckName, templateDir);
+        FileSystem fs = new FileSystemWrapper();
+        SlideDeck slideDeck = new SlideDeck(slideDeckName, templateDir, fs);
         try {
             slideDeck.save();
         } catch (IOException e) {

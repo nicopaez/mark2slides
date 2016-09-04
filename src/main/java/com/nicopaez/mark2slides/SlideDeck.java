@@ -12,17 +12,18 @@ public class SlideDeck {
 
     private final String name;
     private final String templateDir;
+    private final FileSystem fileSystem;
 
-    public SlideDeck(String slideDeckName, String templateDir) {
+    public SlideDeck(String slideDeckName, String templateDir, FileSystem fs) {
         this.name = slideDeckName;
         this.templateDir = templateDir;
+        this.fileSystem = fs;
     }
 
     public void save() throws IOException {
-        // copy templateDir name
         String basePath = System.getProperty("user.dir");
-        File srcDir = new File(basePath + "/" + this.templateDir);
-        File destDir = new File(basePath + "/" + this.name);
-        FileUtils.copyDirectory(srcDir, destDir);
+        String srcDirName = basePath + "/" + this.templateDir;
+        String destDirName = basePath + "/" + this.name;
+        this.fileSystem.copyDirectory(srcDirName, destDirName);
     }
 }
