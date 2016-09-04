@@ -7,4 +7,9 @@ import java.io.IOException;
  */
 public interface FileSystem {
     void copyDirectory(String srcDirName, String destDirName) throws IOException;
+
+    String readFileAsString(String fileName) throws IOException;
+
+    void writeStringToFile(String content, String contentFileName) throws IOException;
 }
+

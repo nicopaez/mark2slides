@@ -25,5 +25,10 @@ public class SlideDeck {
         String srcDirName = basePath + "/" + this.templateDir;
         String destDirName = basePath + "/" + this.name;
         this.fileSystem.copyDirectory(srcDirName, destDirName);
+
+        String contentFileName = destDirName + "/" + "index.html";
+        String content = this.fileSystem.readFileAsString(contentFileName);
+        content = content.replaceFirst("[title]", this.name);
+        this.fileSystem.writeStringToFile(content, contentFileName);
     }
 }

@@ -23,4 +23,18 @@ public class SlideDeckTest {
         // assert
         assertTrue(fs.copyDirectoryWasCall());
     }
+
+    @Test
+    public void shouldSetTitle() throws IOException {
+        // arrange
+        FakeFileSystem fs = new FakeFileSystem();
+        SlideDeck slideDeck = new SlideDeck("mydeck1", "templateDir", fs);
+
+        // act
+        slideDeck.save();
+
+        // assert
+        assertTrue(fs.copyDirectoryWasCall());
+        assertTrue(fs.getContentToWrite().contains("mydeck1"));
+    }
 }
