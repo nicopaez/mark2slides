@@ -20,6 +20,7 @@ public class SlideDeck {
         this.fileSystem = fs;
     }
 
+
     public void save() throws IOException {
         String basePath = System.getProperty("user.dir");
         String srcDirName = basePath + "/" + this.templateDir;
@@ -28,7 +29,27 @@ public class SlideDeck {
 
         String contentFileName = destDirName + "/" + "index.html";
         String content = this.fileSystem.readFileAsString(contentFileName);
-        content = content.replaceFirst("[title]", this.name);
+        content = content.replace("[title]", this.name);
+        content = content.replace("[este-es-el-texto-a-reemplazar]", this.getRootElement().toHtml());
         this.fileSystem.writeStringToFile(content, contentFileName);
+    }
+
+    public Element getRootElement() throws IOException {
+        String markDownContent = this.fileSystem.readFileAsString(this.name + ".md");
+        Element rootElement = new RootElement();
+
+        String[] lines = markDownContent.split("\r");
+        for (String line : lines) {
+
+            if (line.startsWith("##")) {
+                rootElement.addChild(new H2Element(line));
+                continue;
+            }
+            if (line.startsWith("#")) {
+                rootElement.addChild(new H1Element(line));
+                continue;
+            }
+        }
+        return rootElement;
     }
 }
