@@ -32,4 +32,9 @@ public class ElementFactoryTest {
         assert(e.getClass().equals(H2Element.class));
     }
 
+    @Test
+    public void shouldCreateImage() {
+        Element e =  factory.createElement("i:picture.png");
+        assert(e.getClass().equals(ImageElement.class));
+    }
 }

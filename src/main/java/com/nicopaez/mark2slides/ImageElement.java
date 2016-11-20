@@ -3,22 +3,22 @@ package com.nicopaez.mark2slides;
 /**
  * Created by nicopaez on 11/20/16.
  */
-public class H2Element extends Element {
+public class ImageElement extends Element{
 
     private final String content;
 
-    public H2Element(String content) {
+    public ImageElement(String content) {
         super();
         this.content = content;
     }
 
     public static ElementBuilder getBuilder() {
-        return new H2ElementBuilder();
+        return new ImageElementBuilder();
     }
 
     @Override
     public String toHtml() {
-        return "<h2>" + this.content + "</h2>";
+        return "<img src='" + this.content + "' />";
     }
 
     @Override
@@ -26,13 +26,13 @@ public class H2Element extends Element {
 
     }
 
-    static class H2ElementBuilder extends ElementBuilder {
+    static class ImageElementBuilder extends ElementBuilder {
 
         @Override
         public Element build(String line) {
-            if (line.startsWith("##")) {
-                String content = line.replace("##", "");
-                return new H2Element(content);
+            if (line.startsWith("i:")) {
+                String content = line.replace("i:", "");
+                return new ImageElement(content);
             }
             return null;
         }

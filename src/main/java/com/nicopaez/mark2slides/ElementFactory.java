@@ -31,5 +31,6 @@ public class ElementFactory {
     public void initializeWithDefaultBuilders() {
         this.addElement(H2Element.getBuilder());
         this.addElement(H1Element.getBuilder());
+        this.addElement(ImageElement.getBuilder());
     }
 }

@@ -7,9 +7,9 @@ public class H1Element extends Element {
 
     private final String content;
 
-    public H1Element(String line) {
+    public H1Element(String content) {
         super();
-        this.content = line.replace("#", "");
+        this.content = content;
     }
 
     @Override
@@ -18,13 +18,23 @@ public class H1Element extends Element {
     }
 
     public static ElementBuilder getBuilder() {
-        return builder;
+        return new H1ElementBuilder();
     }
-
-    protected static ElementBuilder builder = new H1ElementBuilder();
 
     @Override
     public void addChild(Element e) {
 
+    }
+
+    static class H1ElementBuilder extends ElementBuilder {
+
+        @Override
+        public Element build(String line) {
+            if (line.startsWith("#")) {
+                String content = line.replace("#", "");
+                return new H1Element(content);
+            }
+            return null;
+        }
     }
 }
