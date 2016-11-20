@@ -39,16 +39,10 @@ public class SlideDeck {
         Element rootElement = new RootElement();
 
         String[] lines = markDownContent.split("\r");
+        ElementFactory factory = new ElementFactory();
         for (String line : lines) {
-
-            if (line.startsWith("##")) {
-                rootElement.addChild(new H2Element(line));
-                continue;
-            }
-            if (line.startsWith("#")) {
-                rootElement.addChild(new H1Element(line));
-                continue;
-            }
+            Element e = factory.createElement(line);
+            rootElement.addChild(e);
         }
         return rootElement;
     }

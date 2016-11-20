@@ -17,6 +17,12 @@ public class H1Element extends Element {
         return "<h1>" + this.content + "</h1>";
     }
 
+    public static ElementBuilder getBuilder() {
+        return builder;
+    }
+
+    protected static ElementBuilder builder = new H1ElementBuilder();
+
     @Override
     public void addChild(Element e) {
 

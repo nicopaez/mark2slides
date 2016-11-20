@@ -12,6 +12,10 @@ public class H2Element extends Element {
         this.content = line.replace("##", "");
     }
 
+    public static ElementBuilder getBuilder() {
+        return new H2ElementBuilder();
+    }
+
     @Override
     public String toHtml() {
         return "<h2>" + this.content + "</h2>";
